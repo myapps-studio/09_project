@@ -12,12 +12,12 @@ process.stdin.on('readable', function() {
             case 'version':
                 // jęz. systemowy
                 process.stdout.write(nodeVersion);
-                process.exit();
+                input = process.stdin.read();
             break;
             case 'lang':
                 // node version
                 process.stdout.write(nodeLang);
-                process.exit();
+                input = process.stdin.read();
             break;
             case '/exit':
                 process.stderr.write('Wrong instruction! You use exit!');
@@ -25,6 +25,7 @@ process.stdin.on('readable', function() {
             break;
             default:
                 process.stderr.write('Wrong instruction!');
+                process.exit();
         }
     }
 });
